@@ -1,0 +1,24 @@
+## Esto en teoria no debería funcinar porque hay que
+## pasar country_dict['2022 Population'] y está como string
+## entonces habría que meterle esto
+## int(country_dict['2022 Population'])
+## Pero igualmente está funcionando.
+
+def get_population(country_dict):
+  population_dict = {
+    '2022': country_dict['2022 Population'],
+    '2020': country_dict['2020 Population'],
+    '2015': country_dict['2015 Population'],
+    '2010': country_dict['2010 Population'],
+    '2000': country_dict['2000 Population'],
+    '1990': country_dict['1990 Population'],
+    '1980': country_dict['1980 Population'],
+    '1970': country_dict['1970 Population']
+  }
+  labels = population_dict.keys()
+  values = population_dict.values()
+  return labels, values
+
+def population_by_country(data, country):
+  result = list(filter(lambda item: item['Country/Territory'] == country, data))
+  return result
