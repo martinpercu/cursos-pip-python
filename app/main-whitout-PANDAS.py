@@ -1,21 +1,17 @@
 import read_csv
 import charts
 import utils
-import pandas as pd
 
 
 def run():
+  data = read_csv.read_csv('data.csv')
 
-  df = pd.read_csv('data.csv')
-  df = df[df['Continent'] == 'Africa']
-  
-  countries = df['Country/Territory'].values
-  porcentages = df['World Population Percentage'].values
-  
+  # data = list(filter(lambda item : item['Continent'] == 'South America', data))
+
+  countries = list(map(lambda x: x['Country/Territory'], data))
+  porcentages = list(map(lambda x: x['World Population Percentage'], data))
   charts.generate_pie_chart(countries, porcentages)
 
-
-  data = read_csv.read_csv('data.csv')
   country = input('Elegite el pais ==> ')
   country_name = country 
   #use country to send to generate_bar_chart
